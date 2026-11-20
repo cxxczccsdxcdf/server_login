@@ -15,9 +15,9 @@ class Servers:                        #создаем класс сервера
             if command == "выход пользователя":
                 break      #останавка если пользователь  выходит
             elif command == "действие": 
-                print("выполнение действия")  #во сколько польвзаоетль зашёл и вышел
+                print("выполнение действия")  #во сколько польльзователь  зашёл и вышел
                 time.sleep(self.setting_time)
-                player_starts["score"] += random.randint(20, 70)
+                player_starts["score"] += random.randint(20, 70) 
                 print(f"завершил действе {player_starts["score"]}")
 
     def register_user(self, max_users): #создали новую функцию для максмального количества пользоваетелей
@@ -34,35 +34,35 @@ class Servers:                        #создаем класс сервера
                  print(f"бан ник {name} содержит мат доступ ограничекн")
                  continue     #вовращение цикла
 
-            if name in self.user:
+            if name in self.user: #условие при котором ник будет занят мы помещаем в селф юзер
                 print(f"ошибка ник {name} занят! придумайте пожалуйстра другой")
-                continue
-            easy_password = ["1235049", "3304049", "qwertyuiop"]
-            while True:
+                continue  #берёт с сначала где просит ввести ник
+            easy_password = ["1235049", "3304049", "qwertyuiop"] #список паролей при которых выдаст ошибку
+            while True: #цикл будет повторяться если пароль неверный или кажыдй раз когда пользваоетль будет заходить
               password_input = input("введите пароль: ")
-              if password_input in easy_password:
+              if password_input in easy_password:  #к условию при вводе пароля добавляем недоступность легких паролей
                 print("ошибка очень легкий пароль")
-                continue
+                continue  #вовращает нас на начало обьекта
               else:
                   self.user[name] = password_input
-                  break
+                  break  #заканчиваем цикл чтоб не бьло ошибки
             print(f"игрок [{name} мы успешно добавили на сервер")
             print("-" * 40)
         print("места закончились места завершив регистрацию")
-        print(f"игроки на сервере добавлены {list(self.user.keys())}")
-    def account_user(self):
+        print(f"игроки на сервере добавлены {list(self.user.keys())}") #берёт из списка всех игроков
+    def account_user(self): #создалм функцию при входе в аккаунт
         print(f"входим в аккаунт на сервер [{self.server.name}")
         name = input("введём имя")
-        if name not in self.user:
+        if name not in self.user:  #здесь если мы ведём пользователя которого нет на сервере
             print("такого пользователя нет")
-            return None
-        attemps = 3
-        while True:
+            return None  
+        attemps = 3   создали объект попыток
+        while True:  #цикл верно если пароль неверный
             print(f"неверный пароль отсалось пыпок {attemps}")
             password = input("Введите пароль")
-            if password == self.user[name]:
-                time_sleap = time.strftine("%d.%m.%Y.%H:%M:%S")
-                print(f"пароль был введен верно {name}")
+            if password == self.user[name]: 
+                time_sleap = time.strftine("%d.%m.%Y.%H:%M:%S") #здесь время когда зашёл пользователь 
+                print(f"пароль был введен верно {name}") #здесь будет указано имя пользователя котоырй ввёл пароль верно
                 print(f"Точное время входа: {time_sleap}")
                 print("_" * 80)
                 return name
